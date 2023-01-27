@@ -1,0 +1,13 @@
+body {
+  /*font: 14px "Roboto";*/
+  font-family: "Roboto";
+}
+
+a {
+  color: #00B7FF;
+}
+.home-wrapper{
+  background-image: url("https://images.unsplash.com/photo-1614292264554-7dca1d6466d6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80");
+  height: 100vh;
+  background-size: auto;
+}
