@@ -1,0 +1,68 @@
+<div class="container">
+   <h4 class="text-center">Business Listings</h4>
+    
+    <table class="table mt-4 table-striped table-hover">
+        <thead>
+        <tr>
+            <th scope="col">Contact Name</th>
+            <th scope="col">Email Address</th>
+            <th scope="col">Mobile</th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <% for (var i = 0; i < BusinessList.length; i++) { %>
+            <tr>
+                <th scope="row"><%=BusinessList[i].name%></th>
+                <td><%=BusinessList[i].address%></td>
+                <td><%=BusinessList[i].mobile%></td>
+                <td>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#<%=BusinessList[i]._id%>_editModal">
+                        <i class="fa-solid fa-edit"></i> EDIT
+                    </button>
+                    
+                    <a href="/business/deletebusiness/<%=BusinessList[i]._id%>" class="btn btn-sm btn-danger" ><i class="fa-solid fa-trash"></i> DELETE</a>
+                </td>
+            </tr>
+        <% }%>
+
+        </tbody>
+    </table>
+    
+    <!-- Modal -->
+    <% for(var x = 0; x < BusinessList.length; x++) { %>
+    <div class="modal fade" id="<%=BusinessList[x]._id%>_editModal" tabindex="-1"  aria-hidden="true">
+        <div class="modal-dialog">
+            <form action="/business/edit" method="post">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" ><%=BusinessList[x].name%></h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" name="id" value="<%=BusinessList[x]._id%>">
+                    <div class="form-floating mb-3">
+                        <input required type="text" class="form-control" id="floatingName" name="name" value="<%=BusinessList[x].name%>">
+                        <label for="floatingName">Contact Name</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input required type="email" class="form-control" name="address" id="floatingAddress" value="<%=BusinessList[x].address%>">
+                        <label for="floatingAddress">Email address</label>
+                    </div>
+                    <div class="form-floating">
+                        <input type="text" class="form-control" name="mobile" id="floatingMobile" value="<%=BusinessList[x].mobile%>">
+                        <label for="floatingMobile">Password</label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Proceed</button>
+                </div>
+            
+            </div>
+            </form>
+        </div>
+    </div>
+    <% }%>
+</div>
